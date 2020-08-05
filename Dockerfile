@@ -1,18 +1,21 @@
 FROM node:13-slim
 
-MAINTAINER James Spurin <james@spurin.com>
+MAINTAINER benbendemo <xc0910@hotmail.com>
 
 # Set the server port as an environmental
 ENV HEXO_SERVER_PORT=4000
 
 # Set the git username and email
-ENV GIT_USER="Joe Bloggs"
-ENV GIT_EMAIL="joe@bloggs.com"
+ENV GIT_USER="benbendemo"
+ENV GIT_EMAIL="xc0910@hotmail.com"
+
+COPY config/apt-source.list /etc/apt/sources.list
 
 # Install requirements
 RUN \
  apt-get update && \
  apt-get install git -y && \
+ npm config set registry https://registry.npm.taobao.org && \
  npm install -g hexo-cli
 
 # Set workdir
