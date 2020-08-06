@@ -9,7 +9,8 @@ ENV HEXO_SERVER_PORT=4000
 ENV GIT_USER="benbendemo"
 ENV GIT_EMAIL="xc0910@hotmail.com"
 
-COPY config/apt-source.list /etc/apt/sources.list
+RUN echo "deb http://mirrors.ustc.edu.cn/debian stable main contrib non-free" > /etc/apt/sources.list && \
+    echo "deb http://mirrors.ustc.edu.cn/debian stable-updates main contrib non-free" >> /etc/apt/sources.list
 
 # Install requirements
 RUN \
